@@ -1,2 +1,2 @@
 https://github.com/PolkovnikovPavel/-all_tasks.git
-e88c87c
+d94dc8d
