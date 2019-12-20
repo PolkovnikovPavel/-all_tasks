@@ -65,7 +65,6 @@ def generate_level(level):
             elif level[y][x] == '@':
                 Tile('empty', x, y)
                 new_player = Player(x, y)
-    # вернем игрока, а также размер поля в клетках
     return new_player, x, y
 
 
@@ -99,8 +98,6 @@ class Player(pygame.sprite.Sprite):
         self.shift_y = 0
 
     def update(self, *args):
-        key = args[0]
-
         if self.shift_x != 0 or self.shift_y != 0:
             self.rect.x += self.shift_x
             self.rect.y += self.shift_y
@@ -135,14 +132,15 @@ while running:
     key = pygame.key.get_pressed()
     if key[pygame.K_RIGHT]:
         player.shift_x = 1
-    else:
-        player.shift_x = 0
-    if key[pygame.K_LEFT]:
+    elif key[pygame.K_LEFT]:
         player.shift_x = -1
     else:
         player.shift_x = 0
+
     if key[pygame.K_UP]:
         player.shift_y = -1
+    elif key[pygame.K_DOWN]:
+        player.shift_y = 1
     else:
         player.shift_y = 0
 
