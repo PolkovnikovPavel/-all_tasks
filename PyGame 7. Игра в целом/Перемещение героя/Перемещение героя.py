@@ -1,5 +1,6 @@
-import pygame
 import os
+
+import pygame
 
 pygame.init()
 
@@ -45,6 +46,7 @@ def load_image(name, colorkey=None):
     image = pygame.image.load(fullname)
     return image
 
+
 def load_level(filename):
     filename = "data/" + filename
     with open(filename, 'r') as mapFile:
@@ -72,7 +74,8 @@ class Tile(pygame.sprite.Sprite):
     def __init__(self, tile_type, pos_x, pos_y):
         super().__init__(tiles_group, all_sprites)
         self.image = tile_images[tile_type]
-        self.rect = self.image.get_rect().move(tile_width * pos_x, tile_height * pos_y)
+        self.rect = self.image.get_rect().move(tile_width * pos_x,
+                                               tile_height * pos_y)
 
 
 class Camera:
@@ -93,7 +96,8 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, pos_x, pos_y):
         super().__init__(player_group, all_sprites)
         self.image = player_image
-        self.rect = self.image.get_rect().move(tile_width * pos_x + 15, tile_height * pos_y + 5)
+        self.rect = self.image.get_rect().move(tile_width * pos_x + 15,
+                                               tile_height * pos_y + 5)
         self.shift_x = 0
         self.shift_y = 0
 
@@ -101,7 +105,6 @@ class Player(pygame.sprite.Sprite):
         if self.shift_x != 0 or self.shift_y != 0:
             self.rect.x += self.shift_x
             self.rect.y += self.shift_y
-
 
 
 size = width, height = 500, 350
@@ -143,7 +146,6 @@ while running:
         player.shift_y = 1
     else:
         player.shift_y = 0
-
 
     all_sprites.update()
     camera.update(player)
